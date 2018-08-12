@@ -1,0 +1,16 @@
+sudo: false
+language: node_js
+node_js:
+    - "stable"
+
+cache:
+    directories:
+        - node_modules
+
+before_script:
+    - npm run lint
+
+script:
+    - node --version
+    - npm --version
+    - npm run test

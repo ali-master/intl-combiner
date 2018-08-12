@@ -1,0 +1,83 @@
+{
+	"name": "intl-combiner",
+	"version": "0.0.0",
+	"description": "Extract and Combine react-intl message with together on single locale file.",
+	"main": "./bin/cli.js",
+	"bin": "./bin/cli.js",
+	"engines": {
+		"node": ">=6.11.5"
+	},
+	"scripts": {
+		"test": "jest",
+		"lint": "eslint src test",
+		"lint:fix": "npm run lint -- --fix",
+		"watch": "nodemon src/cli.js --exec babel-node",
+		"build": "babel src --out-dir build",
+		"serve": "node build/cli.js",
+		"release": "npm run build && npm run test && standard-version"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ali-master/intl-combiner.git"
+	},
+	"files": [
+		"bin"
+	],
+	"keywords": [
+		"react-intl",
+		"intl",
+		"react",
+		"intl combiner"
+	],
+	"author": "Ali Torki <ali_4286@live.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/ali-master/intl-combiner/issues"
+	},
+	"homepage": "https://github.com/ali-master/intl-combiner#readme",
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-core": "^6.26.3",
+		"babel-eslint": "^8.2.6",
+		"babel-jest": "^23.4.2",
+		"babel-register": "^6.26.0",
+		"babel-plugin-transform-object-rest-spread": "^6.26.0",
+		"babel-preset-env": "^1.7.0",
+		"chalk": "^2.4.1",
+		"eslint": "^5.3.0",
+		"eslint-config-standard": "^11.0.0",
+		"eslint-plugin-import": "^2.13.0",
+		"eslint-plugin-node": "^7.0.1",
+		"eslint-plugin-prettier": "^2.6.2",
+		"eslint-plugin-promise": "^3.8.0",
+		"eslint-plugin-standard": "^3.1.0",
+		"jest-cli": "^23.5.0",
+		"nodemon": "^1.18.3",
+		"prettier": "^1.14.2",
+		"prettier-eslint": "^8.8.2",
+		"shelljs": "^0.8.2",
+		"standard-version": "^4.4.0"
+	},
+	"jest": {
+		"transform": {
+			"^.+\\.js$": "babel-jest"
+		},
+		"testEnvironment": "node",
+		"modulePathIgnorePatterns": [
+			"build/.*",
+			"src/.*"
+		],
+		"testPathIgnorePatterns": [
+			"/node_modules/",
+			"/build/",
+			"/src/"
+		]
+	},
+	"dependencies": {
+		"glob": "^7.1.2",
+		"json-beautify": "^1.0.1",
+		"lodash.size": "^4.2.0",
+		"ramda": "^0.25.0",
+		"yargs": "^12.0.1"
+	}
+}

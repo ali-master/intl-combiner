@@ -1,0 +1,15 @@
+{
+	"context": "./src/",
+	"message": "**/messages.js",
+	"diffPath": "locales/diff.json",
+	"locales": [
+		{
+			"name": "en",
+			"path": "locales/en.json"
+		},
+		{
+			"name": "fr",
+			"path": "locales/fr.json"
+		}
+	]
+}
