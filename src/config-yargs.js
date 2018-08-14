@@ -5,15 +5,9 @@ module.exports = function(yargs) {
 		.version()
 		.alias("version", "v")
 		.options({
-			config: {
-				type: "string",
-				describe: "Path to the config file",
-				defaultDescription: ".combinerrc",
-				requiresArg: true
-			},
 			context: {
 				type: "string",
-				alias: "c",
+				alias: "C",
 				describe:
 					"The base directory, an absolute path, for resolving entry points and loaders from configuration.",
 				requiresArg: true
@@ -35,6 +29,14 @@ module.exports = function(yargs) {
 				alias: "m",
 				describe:
 					"Path to the messages files. this string inlcudes glob model",
+				requiresArg: true
+			},
+			findBy: {
+				type: "string",
+				alias: "f",
+				describe:
+					"The goal locale name which does you want to find differences and merge diffs to that.",
+				defaultDescription: "en or fr",
 				requiresArg: true
 			}
 		});

@@ -1,25 +1,15 @@
 import fs from "fs";
 import path from "path";
-import process from "process";
+import findUp from "find-up";
 
 let config;
+let configFileNames = [".combinerrc", ".combinerrc.json", ".combinerrc.js"];
+let configPath = findUp.sync(configFileNames);
 
-const configFileName = ".combinerrc";
+if (path.basename(configPath).includes(".js")) {
+	config = require(configPath);
+} else {
+	config = configPath ? JSON.parse(fs.readFileSync(configPath)) : {};
+}
 
-export const getConfig = (
-	existingConfig = config,
-	readFile = fs.readFileSync,
-	configPath = path.join(process.cwd(), configFileName)
-) => {
-	if (existingConfig) {
-		return existingConfig;
-	}
-
-	try {
-		config = JSON.parse(readFile(configPath, "utf-8"));
-	} catch (e) {
-		config = null;
-	}
-
-	return config;
-};
+export default config;

@@ -11,9 +11,9 @@
 		"test": "jest",
 		"lint": "eslint src test",
 		"lint:fix": "npm run lint -- --fix",
-		"watch": "nodemon src/cli.js --exec babel-node",
-		"build": "babel src --out-dir build",
-		"serve": "node build/cli.js",
+		"watch": "NODE_ENV=development nodemon src/cli.js --ignore ./src/locales --exec babel-node",
+		"build": "NODE_ENV=development babel src --out-dir build",
+		"serve": "NODE_ENV=development node build/cli.js",
 		"release": "npm run build && npm run test && standard-version"
 	},
 	"repository": {
@@ -40,13 +40,13 @@
 		"babel-core": "^6.26.3",
 		"babel-eslint": "^8.2.6",
 		"babel-jest": "^23.4.2",
-		"babel-register": "^6.26.0",
 		"babel-plugin-transform-object-rest-spread": "^6.26.0",
 		"babel-preset-env": "^1.7.0",
+		"babel-register": "^6.26.0",
 		"chalk": "^2.4.1",
 		"eslint": "^5.3.0",
 		"eslint-config-standard": "^11.0.0",
-		"eslint-plugin-import": "^2.13.0",
+		"eslint-plugin-import": "^2.14.0",
 		"eslint-plugin-node": "^7.0.1",
 		"eslint-plugin-prettier": "^2.6.2",
 		"eslint-plugin-promise": "^3.8.0",
@@ -65,19 +65,26 @@
 		"testEnvironment": "node",
 		"modulePathIgnorePatterns": [
 			"build/.*",
-			"src/.*"
+			"src/.*",
+			"bin/.*"
 		],
 		"testPathIgnorePatterns": [
 			"/node_modules/",
 			"/build/",
-			"/src/"
+			"/src/",
+			"/bin/"
 		]
 	},
 	"dependencies": {
+		"babel-plugin-react-intl": "^2.4.0",
+		"babel-preset-react-app": "^3.1.2",
+		"find-up": "^3.0.0",
 		"glob": "^7.1.2",
+		"js-beautify": "^1.8.0-rc6",
 		"json-beautify": "^1.0.1",
 		"lodash.size": "^4.2.0",
 		"ramda": "^0.25.0",
+		"react-intl": "^2.4.0",
 		"yargs": "^12.0.1"
 	}
 }

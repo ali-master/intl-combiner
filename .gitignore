@@ -2,10 +2,10 @@
 # Logs
 logs
 *.log
+*.lock
 npm-debug.log*
-
 # Dependency directories
 node_modules
 jspm_packages
-
+src/locales
 package-lock.json
