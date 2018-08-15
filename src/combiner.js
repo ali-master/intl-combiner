@@ -32,9 +32,9 @@ class IntlCombiner {
 	}
 
 	/**
-	 * findMessages - Get and find Intl messages objects
+	 * saveMessages - Get and find Intl messages objects
 	 */
-	findMessages(callback) {
+	saveMessages(callback) {
 		const srcPaths = glob.sync(this.messagesFile, { absolute: true });
 		const contents = R.map(p => fs.readFileSync(p, "utf-8"), srcPaths);
 		const messages = R.map(

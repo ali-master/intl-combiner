@@ -9,7 +9,7 @@ import configrc from "./config";
 import { version } from "../package.json";
 import {
 	validation,
-	findErrors,
+	saveErrors,
 	existLocale,
 	displayError,
 	relativePath,
@@ -21,12 +21,12 @@ import IntlCombiner from "./combiner";
 	// wrap in IIFE to be able to use return
 	const yargs = parser.usage(`Intl-combiner ${version}
 Usage: intl-combiner [options]
-       intl-combiner [options] find --local <name:path> --findBy <findBy>
+       intl-combiner [options] save --local <name:path> --findBy <findBy>
        intl-combiner [options] merge --local <name:path> --diff-path <diff-path>
        intl-combiner [options] delete
        intl-combiner <command> [options]
 
-Example: intl-combiner --context ./src/ --locale en:locales/en.js --locale fr:locales/fr.js --findBy en --messages **/messages.js
+Example: intl-combiner save --context ./src/ --locale en:locales/en.js --locale fr:locales/fr.js --findBy en --messages **/messages.js
 
 For more information, see https://github.com/ali-master/intl-combiner.`);
 
@@ -34,7 +34,7 @@ For more information, see https://github.com/ali-master/intl-combiner.`);
 
 	yargs
 		.command(
-			["find", "$0"],
+			["save", "$0"],
 			"Find diffs between your findBy property value with current messages in the application."
 		)
 		.help();
@@ -137,7 +137,7 @@ For more information, see https://github.com/ali-master/intl-combiner.`);
 		}
 
 		const {
-			_: [eventType] // Merge or find
+			_: [eventType] // Merge or save
 		} = argv;
 		if (validation(terminalConfig)) {
 			terminalConfig = completeConfig(terminalConfig);
@@ -152,7 +152,7 @@ For more information, see https://github.com/ali-master/intl-combiner.`);
 						diffPath,
 						messages
 					} = terminalConfig;
-					const locale = R.find(R.propEq("name", findBy))(locales)
+					const locale = R.save(R.propEq("name", findBy))(locales)
 						.path;
 
 					const combiner = new IntlCombiner({
@@ -161,9 +161,9 @@ For more information, see https://github.com/ali-master/intl-combiner.`);
 						locale
 					});
 
-					if (eventType === "find") {
+					if (eventType === "save") {
 						combiner
-							.findMessages()
+							.saveMessages()
 							.getDiff()
 							.saveDiff();
 					} else if (eventType === "merge") {
@@ -176,7 +176,7 @@ For more information, see https://github.com/ali-master/intl-combiner.`);
 					}
 				}
 			} else {
-				displayError(findErrors(terminalConfig));
+				displayError(saveErrors(terminalConfig));
 			}
 		} else {
 			let localConfig = {
@@ -198,9 +198,9 @@ For more information, see https://github.com/ali-master/intl-combiner.`);
 						locale
 					});
 
-					if (eventType === "find") {
+					if (eventType === "save") {
 						combiner
-							.findMessages()
+							.saveMessages()
 							.getDiff()
 							.saveDiff();
 					} else if (eventType === "merge") {
@@ -213,7 +213,7 @@ For more information, see https://github.com/ali-master/intl-combiner.`);
 					}
 				}
 			} else {
-				displayError(findErrors(localConfig));
+				displayError(saveErrors(localConfig));
 			}
 		}
 	});
