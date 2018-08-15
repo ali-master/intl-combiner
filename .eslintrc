@@ -13,8 +13,7 @@
 		"ecmaVersion": 6,
 		"sourceType": "module",
 		"ecmaFeatures": {
-			"generators": true,
-			"experimentalObjectRestSpread": true
+			"generators": true
 		}
 	},
 	"rules": {
@@ -160,15 +159,11 @@
 			{
 				"object": "System",
 				"property": "import",
-				"message":
-					"Please use import() instead. More info: https://webpack.js.org/guides/code-splitting/"
+				"message": "Please use import() instead. More info: https://webpack.js.org/guides/code-splitting/"
 			}
 		],
 		"import/first": "error",
 		"import/no-amd": "error",
 		"import/no-webpack-loader-syntax": "error"
-	},
-	"ecmaFeatures": {
-		"modules": true
 	}
 }

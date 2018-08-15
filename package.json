@@ -9,7 +9,7 @@
 	},
 	"scripts": {
 		"test": "jest",
-		"lint": "eslint src test",
+		"lint": "eslint src",
 		"lint:fix": "npm run lint -- --fix",
 		"watch": "NODE_ENV=development nodemon src/cli.js --ignore ./src/locales --exec babel-node",
 		"build": "NODE_ENV=development babel src --out-dir build",
