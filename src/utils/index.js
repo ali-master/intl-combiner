@@ -1,6 +1,7 @@
 import R from "ramda";
-import chalk from "chalk";
 import path from "path";
+import chalk from "chalk";
+import { existsSync } from "fs";
 import beautify from "js-beautify";
 
 /**
@@ -154,4 +155,16 @@ export function existLocale(name, locales) {
 
 		return false;
 	}
+}
+
+export function checkFileExists(list) {
+	const notFoundList = [];
+
+	R.forEach(
+		({ name, path }) =>
+			!existsSync(path) &&
+			notFoundList.push(`${name} => ${relativePath(path)}`)
+	)(list);
+
+	return notFoundList;
 }

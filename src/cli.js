@@ -13,6 +13,7 @@ import {
 	existLocale,
 	displayError,
 	relativePath,
+	checkFileExists,
 	ifArg as ifArgFunction
 } from "./utils";
 import IntlCombiner from "./combiner";
@@ -143,6 +144,8 @@ For more information, see https://github.com/ali-master/intl-combiner.`);
 			terminalConfig = completeConfig(terminalConfig);
 
 			if (validation(terminalConfig)) {
+				if (showNotFoundErrors(terminalConfig.locales)) return false;
+
 				if (
 					existLocale(terminalConfig.findBy, terminalConfig.locales)
 				) {
@@ -187,6 +190,8 @@ For more information, see https://github.com/ali-master/intl-combiner.`);
 			// console.log("localConfig", localConfig);
 
 			if (validation(localConfig)) {
+				if (showNotFoundErrors(localConfig.locales)) return false;
+
 				if (existLocale(localConfig.findBy, localConfig.locales)) {
 					const { messages, diffPath, locales, findBy } = localConfig;
 					const locale = R.find(R.propEq("name", findBy))(locales)
@@ -217,6 +222,22 @@ For more information, see https://github.com/ali-master/intl-combiner.`);
 			}
 		}
 	});
+
+	function showNotFoundErrors(list) {
+		const errors = checkFileExists(list);
+		if (!R.isEmpty(checkFileExists(list))) {
+			console.log(
+				chalk.yellow(
+					"These following files don't exist, make sure you have written the right paths:"
+				),
+				"\n"
+			);
+			console.log(chalk.red(errors.join("\n")));
+			return true;
+		}
+
+		return false;
+	}
 
 	function deleteFile(file) {
 		unlink(file, err => {
