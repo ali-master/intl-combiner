@@ -3,7 +3,10 @@
 	"version": "0.0.0",
 	"description": "Extract and Combine react-intl messages with together on single locale file.",
 	"main": "./build/cli.js",
-	"bin": "./build/cli.js",
+	"bin": {
+		"intl-combiner": "./build/cli.js",
+		"combiner": "./build/cli.js"
+	},
 	"engines": {
 		"node": ">=6.11.5"
 	},
