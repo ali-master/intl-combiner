@@ -1,6 +1,6 @@
 {
   "name": "intl-combiner",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Extract and Combine react-intl messages with together on single locale file.",
   "main": "./build/cli.js",
   "bin": {
@@ -38,8 +38,8 @@
   },
   "homepage": "https://github.com/ali-master/intl-combiner#readme",
   "devDependencies": {
+    "@babel/core": "^7.0.0-rc.1",
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.6",
     "babel-jest": "^23.4.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
