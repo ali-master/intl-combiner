@@ -1,6 +1,6 @@
 {
   "name": "intl-combiner",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Extract and Combine react-intl messages with together on single locale file.",
   "main": "./build/cli.js",
   "bin": {
@@ -16,7 +16,7 @@
     "watch": "cross-env NODE_ENV=development nodemon src/cli.js --ignore ./src/locales --exec babel-node",
     "build": "cross-env NODE_ENV=production babel src --out-dir build",
     "serve": "cross-env NODE_ENV=production node build/cli.js",
-    "release": "npm run build && npm run test && standard-version"
+    "release": "npm run build && standard-version"
   },
   "repository": {
     "type": "git",
