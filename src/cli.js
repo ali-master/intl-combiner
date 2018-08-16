@@ -138,7 +138,7 @@ For more information, see https://github.com/ali-master/intl-combiner.`);
 		}
 
 		const {
-			_: [eventType] // Merge or save
+			_: [eventType] // Merge or Save or Delete
 		} = argv;
 		if (validation(terminalConfig)) {
 			terminalConfig = completeConfig(terminalConfig);
@@ -155,7 +155,7 @@ For more information, see https://github.com/ali-master/intl-combiner.`);
 						diffPath,
 						messages
 					} = terminalConfig;
-					const locale = R.save(R.propEq("name", findBy))(locales)
+					const locale = R.find(R.propEq("name", findBy))(locales)
 						.path;
 
 					const combiner = new IntlCombiner({
