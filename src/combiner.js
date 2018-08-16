@@ -1,7 +1,7 @@
 import fs from "fs";
 import glob from "glob";
 import chalk from "chalk";
-import { transform } from "babel-core";
+import { transform } from "@babel/core";
 
 // Ramda functions
 import R from "ramda";
