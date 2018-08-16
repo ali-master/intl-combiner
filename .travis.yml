@@ -13,4 +13,4 @@ before_script:
 script:
     - node --version
     - npm --version
-    - npm run test
+    - npm run lint:fix
