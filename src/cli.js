@@ -1,12 +1,13 @@
 #!/usr/bin/env node
-import { unlink } from "fs";
 import path from "path";
+import { unlink } from "fs";
 import program from "yargs";
+import updateNotifier from "update-notifier";
 
 import R from "ramda";
 import chalk from "chalk";
 import configrc from "./config";
-import { version } from "../package.json";
+import pkg, { version } from "../package.json";
 import {
 	validation,
 	saveErrors,
@@ -254,4 +255,6 @@ For more information, see https://github.com/ali-master/intl-combiner.`);
 			);
 		});
 	}
+
+	updateNotifier({ pkg }).notify();
 })(program);
