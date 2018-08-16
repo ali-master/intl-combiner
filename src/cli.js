@@ -19,18 +19,11 @@ import {
 } from "./utils";
 import IntlCombiner from "./combiner";
 
+import help from "./lib/help";
+
 (function(parser) {
 	// wrap in IIFE to be able to use return
-	const yargs = parser.usage(`Intl-combiner ${version}
-Usage: intl-combiner [options]
-       intl-combiner [options] save --local <name:path> --findBy <findBy>
-       intl-combiner [options] merge --local <name:path> --diff-path <diff-path>
-       intl-combiner [options] delete
-       intl-combiner <command> [options]
-
-Example: intl-combiner save --context ./src/ --locale en:locales/en.js --locale fr:locales/fr.js --findBy en --messages **/messages.js
-
-For more information, see https://github.com/ali-master/intl-combiner.`);
+	const yargs = parser.usage(help);
 
 	require("./config-yargs")(yargs);
 
