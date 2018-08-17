@@ -7,8 +7,8 @@
 </h4>
 
 <p align="center">
-  <a href="https://travis-ci.com/ali-master/intl-combiner">
-    <img alt="Build Status" src="https://travis-ci.com/ali-master/intl-combiner.svg?branch=master">
+  <a href="https://travis-ci.org/ali-master/intl-combiner">
+    <img alt="Build Status" src="https://travis-ci.org/ali-master/intl-combiner.svg?branch=master">
   </a>
 </p>
 
