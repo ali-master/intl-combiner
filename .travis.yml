@@ -8,9 +8,8 @@ cache:
         - node_modules
 
 before_script:
-    - npm run lint
+  - node --version
+  - npm --version
 
 script:
-    - node --version
-    - npm --version
-    - npm run lint:fix
+  - npm run lint

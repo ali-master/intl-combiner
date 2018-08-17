@@ -51,10 +51,7 @@
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-node": "^7.0.1",
-<<<<<<< HEAD
     "eslint-plugin-promise": "^3.8.0",
-=======
->>>>>>> 8d6cc400f9331f4432a804f61891357d0cd88b80
     "eslint-plugin-standard": "^3.1.0",
     "jest-cli": "^23.5.0",
     "nodemon": "^1.18.3",
